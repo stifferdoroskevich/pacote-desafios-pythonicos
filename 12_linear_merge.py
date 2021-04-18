@@ -8,10 +8,35 @@ modificar as listas recebidas.
 A sua solução deve rodar em tempo linear, ou seja, deve fazer uma
 única passagem em cada uma das listas.
 """
+from heapq import merge
+
+
+def linear_merge_easy(list1, list2):
+    new_list = []
+    new_list = list(merge(list1, list2))
+    return new_list
+
 
 def linear_merge(list1, list2):
-    # +++ SUA SOLUÇÃO +++
-    return
+    new_list = []
+    pos1, pos2 = 0, 0
+    while True:
+        if (pos1 <= len(list1) - 1) and (pos2 <= len(list2) - 1):
+            if list1[pos1] < list2[pos2]:
+                new_list.append(list1[pos1])
+                pos1 += 1
+            else:
+                new_list.append(list2[pos2])
+                pos2 += 1
+        elif pos1 <= len(list1) - 1:
+            new_list.append(list1[pos1])
+            pos1 += 1
+        elif pos2 <= len(list2) - 1:
+            new_list.append(list2[pos2])
+            pos2 += 1
+        else:
+            return new_list
+    return new_list
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

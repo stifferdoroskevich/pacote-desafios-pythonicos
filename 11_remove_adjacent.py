@@ -8,10 +8,15 @@ Exemplo: [1, 2, 2, 3]
 Irá retornar: [1, 2, 3]
 """
 
-def remove_adjacent(nums):
-    # +++ SUA SOLUÇÃO +++
-    return
 
+def remove_adjacent(nums):
+    new_list = []
+    if nums:
+        new_list.append(nums[0])
+        for pos in range(1, len(nums)):
+            if nums[pos] != nums[pos-1]:
+                new_list.append(nums[pos])
+    return new_list
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
