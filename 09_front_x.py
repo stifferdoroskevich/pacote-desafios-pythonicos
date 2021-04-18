@@ -11,9 +11,17 @@ Dica: Isso pode ser resolvido criando 2 listas e ordenando cada uma
 antes de combina-las.
 """
 
+
 def front_x(words):
-    # +++ SUA SOLUÇÃO +++
-    return
+    x_list, a_list = [], []
+    for word in words:
+        if word[0] == 'x':
+            x_list.append(word)
+        else:
+            a_list.append(word)
+        x_list.sort()
+        a_list.sort()
+    return x_list + a_list
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -43,3 +51,4 @@ if __name__ == '__main__':
          ['xaa', 'xcc', 'aaa', 'bbb', 'ccc'])
     test(front_x, ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
          ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])
+    test(front_x, ['xbb', 'xcc', 'xaa'], ['xaa', 'xbb', 'xcc'])  # only with x
