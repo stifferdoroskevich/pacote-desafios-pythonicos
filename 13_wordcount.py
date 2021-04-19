@@ -57,6 +57,37 @@ import sys
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
 
+def print_words(name, retrieve=False):
+    file = open(name)
+    words_str = file.read().lower()
+    words_list = words_str.split()
+    words_count = {}
+    for w in words_list:
+        if w in words_count.keys():
+            words_count[w] += 1
+        else:
+            words_count[w] = 1
+    if not retrieve:
+        for k, v in words_count.items():
+            print(k, v)
+    else:
+        return words_count
+    file.close()
+
+
+def print_top(name):
+    unsorted_words = print_words(name, retrieve=True)
+    new_list = []
+    for k, v in unsorted_words.items():
+        new_list.append([k, v])
+    new_list.sort(key=lambda t: t[-1], reverse=True)
+    if len(new_list) <= 20:
+        for pair in new_list:
+            print(pair[0], pair[1])
+    else:
+        for pair in new_list[:20]:
+            print(pair[0], pair[1])
+
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
